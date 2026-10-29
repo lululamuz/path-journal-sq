@@ -1,0 +1,159 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Designed to Move — an interactive exploration of Journal Square PATH Station, Jersey City." />
+  <title>SOI: PATH Journal Square</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@300;400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body data-scene="intro">
+
+  <!-- ============ NAVIGATION ============ -->
+  <nav class="nav" aria-label="Sections" hidden>
+    <button class="nav__home" data-go="intro">Designed to Move</button>
+    <ol class="nav__list">
+      <li><button class="nav__item" data-go="movement"><span class="nav__num">01</span><span class="nav__label">Space</span></button></li>
+      <li><button class="nav__item" data-go="sensory"><span class="nav__num">02</span><span class="nav__label">Senses</span></button></li>
+      <li><button class="nav__item" data-go="systems"><span class="nav__num">03</span><span class="nav__label">Systems</span></button></li>
+      <li><button class="nav__item" data-go="ending"><span class="nav__num">—</span><span class="nav__label">End</span></button></li>
+    </ol>
+  </nav>
+
+  <main class="stage">
+
+    <!-- ============ INTRO ============ -->
+    <section class="intro scene" id="intro">
+      <div class="intro__lines" aria-hidden="true">
+        <span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+      </div>
+      <header class="intro__head">
+        <p class="eyebrow" data-text="location"></p>
+        <h1 class="intro__title">Journal Sq</h1>
+        <p class="intro__name">Designed to Move</p>
+        <p class="intro__subtitle" data-text="subtitle"></p>
+      </header>
+      <div class="intro__body">
+        <p class="intro__text" data-text="intro"></p>
+        <button class="btn btn--primary" data-go="movement">Enter the station <span aria-hidden="true">→</span></button>
+      </div>
+      <div class="intro__history-wrap">
+        <p class="intro__history-label">Brief history</p>
+        <ol class="intro__history" id="history" aria-label="Brief history"></ol>
+      </div>
+    </section>
+
+    <!-- ============ 01 MOVEMENT ============ -->
+    <section class="movement scene" id="movement" hidden aria-roledescription="photo sequence">
+      <div class="section-tag">
+        <span class="mono">01 / Spatial Design</span>
+        <span class="section-tag__sub">How we move</span>
+      </div>
+      <div class="movement__frames" id="frames"></div>
+      <div class="movement__shade" aria-hidden="true"></div>
+      <div class="movement__caption" id="caption">
+        <p class="eyebrow" id="cap-label"></p>
+        <h2 class="movement__title" id="cap-title"></h2>
+        <p class="movement__text" id="cap-text"></p>
+        <p class="movement__credit mono" id="cap-credit"></p>
+      </div>
+      <div class="movement__controls">
+        <span class="counter mono" id="counter" aria-live="polite"></span>
+        <div class="progress" id="progress" aria-hidden="true"></div>
+        <div class="arrows">
+          <button class="arrow" id="prev" aria-label="Previous photograph">←</button>
+          <button class="arrow" id="next" aria-label="Next photograph">→</button>
+        </div>
+      </div>
+      <p class="movement__note" id="movement-note"></p>
+    </section>
+
+    <!-- ============ 02 SENSORY ============ -->
+    <section class="sensory scene" id="sensory" hidden>
+      <canvas class="sensory__canvas" id="particles" aria-hidden="true"></canvas>
+      <audio id="audio" preload="auto"></audio>
+
+      <div class="section-tag section-tag--light">
+        <span class="mono">02 / Sensory Environment</span>
+        <span class="section-tag__sub">How we feel and respond</span>
+      </div>
+
+      <div class="sensory__copy" id="sensory-copy">
+        <h2 class="sensory__heading" data-audio="heading"></h2>
+        <p class="sensory__question" data-audio="question"></p>
+        <p class="sensory__desc" data-audio="description"></p>
+        <div class="dev-note" id="dev-note" role="status" hidden>
+          <span class="mono" id="dev-note-title">Development placeholder</span>
+          <p id="dev-note-text"></p>
+        </div>
+      </div>
+
+      <p class="sensory__prompt" id="prompt" aria-live="polite"></p>
+
+      <div class="sensory__factors" id="factors">
+        <p class="mono sensory__factors-title">What I noticed → what people might do</p>
+        <ul id="factor-list"></ul>
+        <p class="sensory__factors-note" data-audio="factorsNote"></p>
+      </div>
+
+      <div class="audio-bar">
+        <div class="audio-bar__buttons">
+          <button class="ctl ctl--main" id="play" disabled>Play</button>
+          <button class="ctl" id="replay" disabled>Replay</button>
+          <button class="ctl" id="mute" aria-pressed="false" disabled>Mute</button>
+          <label class="volume"><span class="sr-only">Volume</span>
+            <input type="range" id="volume" min="0" max="1" step="0.01" value="0.8" disabled />
+          </label>
+          <label class="ctl ctl--file">Load audio file
+            <input type="file" id="file" accept="audio/*" />
+          </label>
+        </div>
+      </div>
+
+      <button class="onward onward--light" data-go="systems">What regulates this? <span aria-hidden="true">→</span></button>
+    </section>
+
+    <!-- ============ 03 SYSTEMS ============ -->
+    <section class="systems scene" id="systems" hidden>
+      <div class="section-tag section-tag--light">
+        <span class="mono">03 / Invisible Systems</span>
+        <span class="section-tag__sub">How our behavior is regulated</span>
+      </div>
+      <div class="systems__layout">
+        <div class="systems__map">
+          <svg id="system-map" viewBox="40 50 920 680" role="group" aria-label="Interactive map of station systems"></svg>
+        </div>
+        <aside class="systems__panel" id="panel" aria-live="polite"></aside>
+      </div>
+      <button class="onward onward--light" data-go="ending">Reflection <span aria-hidden="true">→</span></button>
+    </section>
+
+    <!-- ============ ENDING ============ -->
+    <section class="ending scene" id="ending" hidden>
+      <div class="ending__inner">
+        <p class="eyebrow">Reflection</p>
+        <blockquote class="ending__statement" data-closing="statement"></blockquote>
+        <div class="ending__conclusion">
+          <p class="eyebrow">Conclusion</p>
+          <div id="conclusion"></div>
+        </div>
+        <button class="btn" data-go="intro">Walk the route again</button>
+      </div>
+      <footer class="credits" id="credits"></footer>
+    </section>
+
+  </main>
+
+  <div class="veil" id="veil" aria-hidden="true"></div>
+
+  <!-- Plain scripts (no build step). Order matters: content first. -->
+  <script src="js/content.js"></script>
+  <script src="js/movement.js"></script>
+  <script src="js/sensory.js"></script>
+  <script src="js/systems.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
