@@ -24,10 +24,10 @@ window.Sensory = (function () {
   var ctx = canvas.getContext('2d');
   var audio = document.getElementById('audio');
   var playBtn = document.getElementById('play');
-  var replayBtn = document.getElementById('replay');
-  var muteBtn = document.getElementById('mute');
+  var replayBtn = document.getElementById('replay') || document.createElement('button');
+  var muteBtn = document.getElementById('mute') || document.createElement('button');
   var volumeInput = document.getElementById('volume');
-  var fileInput = document.getElementById('file');
+  var fileInput = document.getElementById('file') || document.createElement('input');
   var copyEl = document.getElementById('sensory-copy');
   var note = document.getElementById('dev-note');
   var noteTitle = document.getElementById('dev-note-title');
@@ -183,8 +183,6 @@ window.Sensory = (function () {
       if (++zeroFrames > 90) blockedByBrowser();
     } else zeroFrames = 0;
 
-    // When the recording suddenly gets louder, ask the visitor a question.
-    if (live && f.onset > 0.45 && performance.now() - lastPrompt > 7000) showPrompt();
 
     step(f, (performance.now() - start) / 1000);
     draw(f);
@@ -194,7 +192,7 @@ window.Sensory = (function () {
   /* ------------------------------------------------------------------
      Prompts on sudden sounds (text from AUDIO.prompts in content.js)
      ------------------------------------------------------------------ */
-  var promptEl = document.getElementById('prompt');
+  var promptEl = document.getElementById('prompt') || document.createElement('p');
   var lastPrompt = -1e9, promptIndex = 0, promptTimer = 0;
   function showPrompt() {
     lastPrompt = performance.now();
@@ -217,10 +215,9 @@ window.Sensory = (function () {
     audio.pause();
     zeroFrames = 0;
     showNote(
-      'Choose the recording',
-      'Because this page was opened directly from your computer, the browser won\'t let it analyze ' +
-      'the audio automatically. Click <b>Load audio file</b> and pick <code>' + AUDIO.src +
-      '</code> from the project folder. (Online, or with VS Code Live Server, this step isn\'t needed.)'
+      'Open from the web address',
+      'Browsers block sound analysis when the page is opened by double-clicking the file. ' +
+      'Open the site from its GitHub Pages address, or with VS Code Live Server, to hear the recording.'
     );
   }
 
@@ -276,8 +273,8 @@ window.Sensory = (function () {
     setEnabled(false);
     showNote(
       'Development placeholder',
-      'No recording found at <code>' + AUDIO.src + '</code>. Add your field recording there, ' +
-      'or click <b>Load audio file</b>. The particles stay still until a real signal is playing.'
+      'No recording found at <code>' + AUDIO.src + '</code>. ' +
+      'The particles stay still until a real signal is playing.'
     );
   });
   audio.addEventListener('play', function () {

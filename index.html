@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description" content="Designed to Move — an interactive exploration of Journal Square PATH Station, Jersey City." />
-  <title>SOI: PATH Journal Square</title>
+  <title>PATH Journal Sq</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@300;400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
@@ -32,7 +32,7 @@
       </div>
       <header class="intro__head">
         <p class="eyebrow" data-text="location"></p>
-        <h1 class="intro__title">Journal Sq</h1>
+        <h1 class="intro__title">PATH<br />Journal Sq</h1>
         <p class="intro__name">Designed to Move</p>
         <p class="intro__subtitle" data-text="subtitle"></p>
       </header>
@@ -91,8 +91,6 @@
         </div>
       </div>
 
-      <p class="sensory__prompt" id="prompt" aria-live="polite"></p>
-
       <div class="sensory__factors" id="factors">
         <p class="mono sensory__factors-title">What I noticed → what people might do</p>
         <ul id="factor-list"></ul>
@@ -102,13 +100,8 @@
       <div class="audio-bar">
         <div class="audio-bar__buttons">
           <button class="ctl ctl--main" id="play" disabled>Play</button>
-          <button class="ctl" id="replay" disabled>Replay</button>
-          <button class="ctl" id="mute" aria-pressed="false" disabled>Mute</button>
           <label class="volume"><span class="sr-only">Volume</span>
             <input type="range" id="volume" min="0" max="1" step="0.01" value="0.8" disabled />
-          </label>
-          <label class="ctl ctl--file">Load audio file
-            <input type="file" id="file" accept="audio/*" />
           </label>
         </div>
       </div>

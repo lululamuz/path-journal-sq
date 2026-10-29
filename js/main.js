@@ -32,6 +32,7 @@
       return '<li><span class="factor">' + f.factor + '</span><span class="response">' + f.response + '</span></li>';
     }).join('');
 
+
   document.getElementById('conclusion').innerHTML = CLOSING.conclusion
     .map(function (t) { return '<p>' + t + '</p>'; }).join('');
 

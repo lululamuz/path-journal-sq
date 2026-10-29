@@ -9,7 +9,7 @@
    ===================================================================== */
 
 var SITE = {
-  location: 'SOI · PATH · Jersey City, New Jersey',
+  location: 'SOI · Jersey City, New Jersey',
   subtitle: 'How PATH shapes the way we move, wait, and interact',
   intro:
     'PATH stations are built as part of a transportation system that moves large numbers of people between New Jersey and New York. To do that, the station has to control where people go, how fast they move, and whether the space is accessible to everyone. I take this route to school every day I have class, and after observing it over time, I started to see how the station was shaping my own behavior too: where I walked, where I stopped, and what I paid attention to. This site explores PATH through three layers: the design of the space, the effect of the senses and how commuters respond, and the systems behind them that regulate how commuters behave.',
@@ -115,13 +115,6 @@ var AUDIO = {
     { factor: 'Cold at street level, warmer underground', response: 'People may pick where they wait' },
   ],
   factorsNote: 'Possible responses I am watching for, not measured results.',
-  // Short prompts that appear when the recording gets suddenly louder.
-  prompts: [
-    'A sudden sound. Did you look up?',
-    'Did your attention move?',
-    'Would you stay here, or keep walking?',
-    'Is a train coming?',
-  ],
 }
 
 /* ---------------------------------------------------------------------
