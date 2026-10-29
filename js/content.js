@@ -102,7 +102,7 @@ var PHOTOS = [
    --------------------------------------------------------------------- */
 var AUDIO = {
   src: 'audio/jsq-station.mp3', // <- change to .m4a / .wav if needed
-  credit: 'Field recording, Journal Square PATH Station',
+  credit: 'Field recording, Journal Square Plaza',
   heading: 'LISTEN TO THE STATION',
   question: 'How do sensory conditions affect what we notice and how we respond in a public space?',
   description:
